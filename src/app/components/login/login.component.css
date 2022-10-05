@@ -1,0 +1,22 @@
+
+form{
+  align-content: center;
+}
+
+
+.header{
+  height: 50px;
+  margin-bottom: 30px;
+  border-radius: 5px 5px 0px 0px  ;
+  opacity: 0.9;
+}
+
+.center{
+  flex: 1 1 auto;
+  text-align: center;
+  align-content: center;
+}
+
+.form-control.ng-touched.ng-invalid{
+  border: 3px solid red;
+}

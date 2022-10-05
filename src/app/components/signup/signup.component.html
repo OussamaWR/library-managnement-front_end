@@ -1,0 +1,52 @@
+<button mat-icon-button (click)="close()" color="accent" style="margin-top:-7px ; margin-bottom:7px ;  float: right;" >
+  <mat-icon>close</mat-icon>
+</button>
+
+<mat-toolbar class="header" color="primary"><span class="center">Sign Up</span></mat-toolbar>
+<div class="container">
+  <form [formGroup]="userFormGroup">
+
+    <div class="mb-3">
+      <label for="name" class="form-label" >Full name </label>
+      <input type="text" class="form-control" id="name"  formControlName="name">
+      <div class="alert-danger" *ngIf="userFormGroup.controls['name']?.['touched'] &&  userFormGroup.controls['name']?.['invalid']" style="color:red ; ">
+        <div *ngIf="userFormGroup.controls['name']?.errors?.['required']"> name  is  required </div>
+        <div *ngIf="userFormGroup.controls['name']?.errors?.['minlength']"> min must have at least {{ userFormGroup.controls['name'].errors?.["minlength"].requiredLength  }}/{{ userFormGroup.controls['name'].errors?.["minlength"].actualLength }} </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="phone" class="form-label">phone</label>
+      <input type="text" class="form-control" id="phone"  formControlName="contactNumber">
+      <div class="alert-danger" *ngIf="userFormGroup.controls['contactNumber']?.['touched'] &&  userFormGroup.controls['contactNumber']?.['invalid']" style="color:red ; ">
+        <div *ngIf="userFormGroup.controls['contactNumber']?.errors?.['required']"> phone  is  required </div>
+        <div *ngIf="userFormGroup.controls['contactNumber']?.errors?.['minlength']"> min must have at least {{ userFormGroup.controls['contactNumber'].errors?.["minlength"].requiredLength  }}/{{ userFormGroup.controls['contactNumber'].errors?.["minlength"].actualLength }} </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" >
+      <div class="alert-danger" *ngIf="userFormGroup.controls['email']?.['touched'] &&  userFormGroup.controls['email']?.['invalid']" style="color:red ; ">
+        <div *ngIf="userFormGroup.controls['email']?.errors?.['required']"> email  is  required </div>
+        <div *ngIf="userFormGroup.controls['email']?.errors?.['pattern']"> invalid  email : test@xxx.com </div>
+      </div>
+    </div>
+
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+      <div class="alert-danger" *ngIf="userFormGroup.controls['password']?.['touched'] &&  userFormGroup.controls['password']?.['invalid']" style="color:red ; ">
+        <div *ngIf="userFormGroup.controls['password']?.errors?.['required']"> password  is  required </div>
+        <div *ngIf="userFormGroup.controls['password']?.errors?.['minlength']"> min must have at least {{ userFormGroup.controls['password'].errors?.["minlength"].requiredLength  }}/{{ userFormGroup.controls['password'].errors?.["minlength"].actualLength }} </div>
+      </div>
+    </div>
+
+
+    <button  [disabled]="userFormGroup.invalid" type="submit" style="width:100% ; margin-bottom: 50px;margin-right: 10%;" mat-raised-button color="accent" (click)="save()">Save</button>
+
+
+  </form>
+
+</div>

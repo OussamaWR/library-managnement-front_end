@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+
+  <span class="title">test </span>
+
+  <span class="example-spacer"></span>
+
+  <button *ngIf="!loggedIn" mat-button class="button-bar"  (click)="signInAction()">
+    <mat-icon>person</mat-icon> <mat-icon>login</mat-icon>
+  </button>
+
+<span *ngIf="loggedIn"  class="name">{{currentUser?.["name"]}}</span>
+
+<button *ngIf="loggedIn" mat-button class="button-bar"  (click)="logout()">
+   Logout <mat-icon>logout</mat-icon>
+  </button>
+
+
+
+  <button *ngIf="!loggedIn" mat-raised-button  color="accent" (click)="signUpAction()" >
+    Sign Up
+  </button>
+
+
+</mat-toolbar>
