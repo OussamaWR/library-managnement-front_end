@@ -55,9 +55,21 @@ export class LoginComponent implements OnInit {
       res =>{
         this.ngxService.stop();
         this.handleResponse(res);
-        this.snackbar.openSnackBar("Wait when  the  admin accept your demande ","success");
+        this.snackbar.openSnackBar("Welcome , "+this.token.getInfos().name,"success");
         this.dialogRef.close();
-        this.route.navigate(["/"]);
+        this.route.navigate(["/dashboard"]);
+      } ,
+      (error)=>{
+        this.ngxService.stop();
+       if(error.error?.message){
+        this.responseMessage=error.error?.message;
+
+       }else{
+        this.responseMessage="Something  is wrong , check your information !!";
+
+       }
+        this.snackbar.openSnackBar(this.responseMessage,"error");
+
       }
     )
   }

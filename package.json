@@ -23,6 +23,7 @@
     "@angular/router": "^14.1.0",
     "bootstrap": "^5.2.1",
     "jquery": "^3.6.1",
+    "jwt-decoder": "^0.0.0",
     "ngx-ui-loader": "^13.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",

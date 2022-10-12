@@ -15,14 +15,18 @@ constructor(private tokenService:TokenService,
   private router:Router){}
 
   canActivate(
-    route: ActivatedRouteSnapshot,
+    next: ActivatedRouteSnapshot,
+
     state: RouterStateSnapshot): boolean  {
-   if(!this.tokenService.loggeIn()){
-    this.tokenService.remove();
-    this.accountService.changeStatus(false)
-    this.router.navigate(["/"]);
-    return false;
-   }
+
+      if(!this.tokenService.loggeIn()){
+        this.router.navigateByUrl('/');
+        this.tokenService.remove();
+        this.accountService.changeStatus(false)
+
+        return false;
+      }
+   console.warn('ok')
    return true ;
   }
 
