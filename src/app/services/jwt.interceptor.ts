@@ -23,7 +23,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
     }
   })
-    console.log(request)
+    console.log("request is  ==> ", request)
     return next.handle(request);
   }
 }

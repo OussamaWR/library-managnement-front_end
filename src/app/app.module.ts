@@ -18,6 +18,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ProductsComponent } from './components/products/products.component';
+import { AddProductsComponent } from './components/products/add-products/add-products.component';
 
 
 
@@ -41,7 +43,9 @@ const ngxUiLoaderConfig : NgxUiLoaderConfig = {
     ForgotPasswordComponent,
     ErrorPageComponent,
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProductsComponent,
+    AddProductsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { DialogRef } from '@angular/cdk/dialog';
 import { SnackbarService } from './../../services/snackbar.service';
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
      private dialogRef : DialogRef<LoginComponent>,
      private ngxService : NgxUiLoaderService,
      private dialog : MatDialog ,
-     private authService : AuthService ,
+    //  private authService : AuthService ,
+    private httpService : HttpClient ,
      private account : AccountService,
      private token: TokenService,
      ) { }
@@ -51,7 +53,7 @@ export class LoginComponent implements OnInit {
 
   signIn(){
     this.ngxService.start();
-    this.authService.login(this.userFormGroup.value).subscribe(
+    this.httpService.post('user/login',this.userFormGroup.value).subscribe(
       res =>{
         this.ngxService.stop();
         this.handleResponse(res);

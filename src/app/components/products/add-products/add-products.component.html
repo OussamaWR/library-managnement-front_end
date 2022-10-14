@@ -1,0 +1,72 @@
+<button mat-icon-button (click)="close()" color="accent" style="margin-top:-7px ; margin-bottom:7px ;  float: right;" >
+  <mat-icon>close</mat-icon>
+</button>
+
+<mat-toolbar class="header" color="primary"><span class="center"> Add product </span></mat-toolbar>
+<div class="container">
+  <form [formGroup]="productFormGroup">
+
+    <div class="mb-3">
+      <label for="name" class="form-label" >Name </label>
+      <input type="text" class="form-control" id="name"  formControlName="name">
+      <div class="alert-danger" *ngIf="productFormGroup.controls['name']?.['touched'] &&  productFormGroup.controls['name']?.['invalid']" style="color:red ; ">
+        <div *ngIf="productFormGroup.controls['name']?.errors?.['required']"> name  is  required </div>
+        <div *ngIf="productFormGroup.controls['name']?.errors?.['minlength']"> min must have at least {{ productFormGroup.controls['name'].errors?.["minlength"].requiredLength  }}/{{ productFormGroup.controls['name'].errors?.["minlength"].actualLength }} </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="category" class="form-label">category</label>
+      <select class="form-select" aria-label="Default select example" formControlName="category">
+
+        <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+
+      </select>
+      <div class="alert-danger" *ngIf="productFormGroup.controls['category']?.['touched'] &&  productFormGroup.controls['category']?.['invalid']" style="color:red ; ">
+        <div *ngIf="productFormGroup.controls['category']?.errors?.['required']"> category  is  required </div>
+      </div>
+    </div>
+
+
+    <div class="mb-3">
+
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" formControlName="description"></textarea>
+      <div class="alert-danger" *ngIf="productFormGroup.controls['description']?.['touched'] &&  productFormGroup.controls['email']?.['invalid']" style="color:red ; ">
+        <div *ngIf="productFormGroup.controls['description']?.errors?.['required']"> description  is  required </div>
+      </div>
+    </div>
+
+
+      <label for="price" class="form-label mb-3" style="margin-bottom: -8px !important;" >Price </label>
+
+    <div class="input-group mb-3">
+
+      <span class="input-group-text">$</span>
+      <input type="number" class="form-control" id="price"  formControlName="price">
+
+
+    </div>
+    <div class="alert-danger" *ngIf="productFormGroup.controls['price']?.['touched'] &&  productFormGroup.controls['price']?.['invalid']" style="color:red ;margin-top: -10px; ">
+      <div *ngIf="productFormGroup.controls['price']?.errors?.['required']"> price  is  required </div>
+    </div>
+
+    <div class="mt-3">
+      <label for="inputGroupFile04"> Image</label>
+    </div>
+    <div class="input-group mb-3">
+
+      <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" formControlName="image">
+
+    </div>
+
+
+    <button [disabled]="productFormGroup.invalid"  type="submit" style="width:100% ; margin-bottom: 50px;margin-right: 10%;" mat-raised-button color="accent" (click)="save()">Save</button>
+
+
+  </form>
+
+</div>

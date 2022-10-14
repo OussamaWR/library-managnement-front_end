@@ -1,25 +1,65 @@
-<mat-toolbar color="primary">
-
-      <span class="title">test </span>
-
-      <span class="example-spacer"></span>
-
-      <button *ngIf="!loggedIn" mat-button class="button-bar" (click)="signInAction()">
-        <mat-icon>person</mat-icon>
-        <mat-icon>login</mat-icon>
-      </button>
-
-      <span *ngIf="loggedIn" class="name">{{currentUser?.["name"]}}</span>
-
-      <button *ngIf="loggedIn" mat-button class="button-bar" (click)="logout()">
-        Logout <mat-icon>logout</mat-icon>
-      </button>
+  <div style="width:100% ; height:100% ;">
+  <mat-toolbar  style=" height: 50px; background-color: #06283D; color:#ffffff" >
+    <button  *ngIf="loggedIn" mat-icon-button (click)="open(drawer)"><mat-icon>menu</mat-icon></button>
 
 
+    <span class="title"> test </span>
 
-      <button *ngIf="!loggedIn" mat-raised-button color="accent" (click)="signUpAction()">
-        Sign Up
-      </button>
+    <span class="example-spacer"></span>
+
+    <button *ngIf="!loggedIn" mat-button class="button-bar" (click)="signInAction()">
+      <mat-icon>person</mat-icon>
+      <mat-icon>login</mat-icon>
+    </button>
+
+    <span *ngIf="loggedIn" class="name">{{currentUser?.["name"]}}</span>
+
+    <button *ngIf="loggedIn" mat-button class="button-bar" (click)="opened?open(drawer):logout() " (click)="logout()" >
+      Logout <mat-icon>logout</mat-icon>
+    </button>
+
+
+
+    <button *ngIf="!loggedIn" mat-raised-button color="accent" (click)="signUpAction()">
+      Sign Up
+    </button>
 
 
 </mat-toolbar>
+
+
+<mat-drawer-container  class="example-container"  autosize>
+
+  <mat-drawer  #drawer class="example-sidenav" mode="side" >
+    <div  style="height: 100% ; height: 100%;" *ngIf="loggedIn">
+      <button  mat-raised-button class="dash-btn"   [color]="currentActiveTab==1?'primary':null"  routerLink='/dashboard' (click)="change(1)">
+      Dashboard
+    </button>
+
+    <button  mat-raised-button  class="dash-btn "   [color]="currentActiveTab==2?'primary':null" routerLink='/dashboard' (click)="change(2)" >
+      Users
+    </button>
+    <button   mat-raised-button class="dash-btn"  [color]="currentActiveTab==3?'primary':null" routerLink='/dashboard/book' (click)="change(3)">
+      books
+    </button>
+    <button  mat-raised-button  class="dash-btn"  [color]="currentActiveTab==4?'primary':null" routerLink='/dashboard' (click)="change(4)">
+      Bills
+    </button>
+    </div>
+
+
+  </mat-drawer>
+
+
+
+
+  <div class="example-sidenav-content">
+    <div class="container">
+       <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</mat-drawer-container>
+
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="container mt-5 mb-5">
+
+    <button type="button" class="btn" (click)="addProduct()" style="color:#000000 ; background-color:#DFF6FF ;">Add Product</button>
+
+  </div>
+  <div class="row my-5" >
+
+    <div class="col-4 mb-5" *ngFor="let product of produits" >
+
+<mat-card class="example-card" >
+  <mat-card-header>
+
+    <mat-card-title>{{product.name}}</mat-card-title>
+    <mat-card-subtitle>{{product.categoryName}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{product.image}}" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <h2 style="float: right"><strong>{{product.price}} $</strong></h2>
+    <p>
+      {{product.description}}
+    </p>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <button mat-button>Edit</button>
+        </div>
+        <div class="col-5">
+          <button mat-button>DELETE</button>
+        </div>
+        <div class="col mt-1 " style="float:right ;">
+          <mat-slide-toggle [(ngModel)]="isChecked"  ></mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </mat-card-actions>
+</mat-card>
+</div></div>
+</div>
